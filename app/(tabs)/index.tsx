@@ -1,10 +1,12 @@
-import {Surface, Text} from "react-native-paper";
+import {Surface, Text, useTheme} from "react-native-paper";
 import {StyleSheet} from "react-native";
 
 export default function Tab() {
+  const {colors} = useTheme();
+
   return (
-    <Surface style={styles.container}>
-      <Text>Hello</Text>
+    <Surface style={{backgroundColor: colors.surface, ...styles.container}}>
+      <Text>Hello World</Text>
     </Surface>
   );
 }

@@ -1,14 +1,14 @@
-import { getHeaderTitle } from '@react-navigation/elements'
-import { NativeStackHeaderProps } from '@react-navigation/native-stack'
+import {getHeaderTitle} from '@react-navigation/elements'
+import {NativeStackHeaderProps} from '@react-navigation/native-stack'
 import React from 'react'
-import { Appbar, AppbarProps } from 'react-native-paper'
+import {Appbar, AppbarProps} from 'react-native-paper'
 
 interface StackHeaderProps extends AppbarProps {
   navProps: NativeStackHeaderProps
 }
 
-const StackHeader = (props: StackHeaderProps) => (
-  <Appbar.Header {...props}>
+const StackHeader = (props: StackHeaderProps) => {
+  return <Appbar.Header {...props}>
     {props.navProps.options.headerLeft
       ? props.navProps.options.headerLeft({
         canGoBack: props.navProps.navigation.canGoBack(),
@@ -16,7 +16,7 @@ const StackHeader = (props: StackHeaderProps) => (
       : undefined}
 
     {props.navProps.back ? (
-      <Appbar.BackAction onPress={props.navProps.navigation.goBack} />
+      <Appbar.BackAction onPress={props.navProps.navigation.goBack}/>
     ) : null}
 
     <Appbar.Content
@@ -29,6 +29,5 @@ const StackHeader = (props: StackHeaderProps) => (
       })
       : undefined}
   </Appbar.Header>
-)
-
+}
 export default StackHeader

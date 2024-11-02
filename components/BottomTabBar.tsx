@@ -1,10 +1,10 @@
-import {BottomNavigation} from "react-native-paper";
+import {BottomNavigation, useTheme} from "react-native-paper";
 import {CommonActions} from "@react-navigation/native";
 import {BottomTabBarProps} from "@react-navigation/bottom-tabs/src/types";
 import React from "react";
 
-const renderBottomNavigationBar = ({navigation, state, descriptors, insets}: BottomTabBarProps) => (
-  <BottomNavigation.Bar
+const CustomBottomTabBar = ({navigation, state, descriptors, insets}: BottomTabBarProps) => {
+  return <BottomNavigation.Bar
     navigationState={state}
     safeAreaInsets={insets}
     onTabPress={({route, preventDefault}) => {
@@ -41,6 +41,6 @@ const renderBottomNavigationBar = ({navigation, state, descriptors, insets}: Bot
           : route.title;
     }}
   />
-)
+}
 
-export default renderBottomNavigationBar
+export default CustomBottomTabBar
