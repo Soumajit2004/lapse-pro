@@ -1,35 +1,36 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import {Tabs} from 'expo-router';
+import {Icon, MD3Colors} from "react-native-paper";
+import renderBottomNavigationBar from "@/components/BottomTabBar";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs tabBar={renderBottomNavigationBar} screenOptions={{headerShown: false}}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+          tabBarIcon: () => <Icon size={28} source={"home"} color={MD3Colors.primary50}/>,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="videos"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+          title: 'Videos',
+          tabBarIcon: () => <Icon size={28} source={"play-box-multiple"} color={MD3Colors.primary50}/>,
+        }}
+      />
+      <Tabs.Screen
+        name="import"
+        options={{
+          title: 'Import',
+          tabBarIcon: () => <Icon size={28} source={"tray-arrow-down"} color={MD3Colors.primary50}/>,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: () => <Icon size={28} source={"cog"} color={MD3Colors.primary50}/>,
         }}
       />
     </Tabs>

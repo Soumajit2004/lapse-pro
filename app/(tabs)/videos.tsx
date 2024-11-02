@@ -1,11 +1,10 @@
-import {Surface, Text} from "react-native-paper";
-import {StyleSheet} from "react-native";
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function Tab() {
   return (
-    <Surface style={styles.container}>
-      <Text>Hello</Text>
-    </Surface>
+    <View style={styles.container}>
+      <Text>Tab [Home|Settings]</Text>
+    </View>
   );
 }
 
