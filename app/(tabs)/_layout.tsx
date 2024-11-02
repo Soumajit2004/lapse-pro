@@ -1,35 +1,42 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import {Tabs} from 'expo-router';
+import {Icon, useTheme} from "react-native-paper";
+import CustomBottomTabBar from "@/components/BottomTabBar";
+import RootHeader from "@/components/RootHeader";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const {colors: themeColors} = useTheme()
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs tabBar={(props) => <CustomBottomTabBar {...props}/>} screenOptions={{
+      headerTitle: "Lapse Pro",
+      header: () => <RootHeader children={null}/>
+    }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+          tabBarIcon: () => <Icon size={28} source={"home"} color={themeColors.primary}/>,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="videos"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+          title: 'Videos',
+          tabBarIcon: () => <Icon size={28} source={"play-box-multiple"} color={themeColors.primary}/>,
+        }}
+      />
+      <Tabs.Screen
+        name="import"
+        options={{
+          title: 'Import',
+          tabBarIcon: () => <Icon size={28} source={"tray-arrow-down"} color={themeColors.primary}/>,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: () => <Icon size={28} source={"cog"} color={themeColors.primary}/>,
         }}
       />
     </Tabs>
