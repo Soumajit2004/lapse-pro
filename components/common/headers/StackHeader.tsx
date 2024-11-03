@@ -1,13 +1,17 @@
 import {getHeaderTitle} from '@react-navigation/elements'
 import {NativeStackHeaderProps} from '@react-navigation/native-stack'
 import React from 'react'
-import {Appbar, AppbarProps} from 'react-native-paper'
+import {Appbar, AppbarProps, MD3Theme, useTheme} from 'react-native-paper'
+import {StyleSheet} from "react-native";
 
 interface StackHeaderProps extends AppbarProps {
   navProps: NativeStackHeaderProps
 }
 
-const StackHeader = (props: StackHeaderProps) => {
+export default function StackHeader(props: StackHeaderProps) {
+  const theme = useTheme()
+  const themedStyles = styles(theme);
+
   return <Appbar.Header {...props}>
     {props.navProps.options.headerLeft
       ? props.navProps.options.headerLeft({
@@ -21,6 +25,7 @@ const StackHeader = (props: StackHeaderProps) => {
 
     <Appbar.Content
       title={getHeaderTitle(props.navProps.options, props.navProps.route.name)}
+      titleStyle={themedStyles.title}
     />
 
     {props.navProps.options.headerRight
@@ -30,4 +35,11 @@ const StackHeader = (props: StackHeaderProps) => {
       : undefined}
   </Appbar.Header>
 }
-export default StackHeader
+
+const styles = (theme: MD3Theme) => StyleSheet.create({
+  title: {
+    color: theme.colors.onBackground,
+    fontSize: 20,
+    fontWeight: '700',
+  }
+})

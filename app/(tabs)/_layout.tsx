@@ -26,13 +26,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="import"
-        options={{
-          title: 'Import',
-          tabBarIcon: () => <Icon size={28} source={"tray-arrow-down"} color={themeColors.primary}/>,
-        }}
-      />
-      <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',

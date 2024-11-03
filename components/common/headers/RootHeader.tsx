@@ -1,12 +1,20 @@
 import React from 'react'
+import {StyleSheet} from 'react-native'
 import {Appbar, AppbarProps} from 'react-native-paper'
 
 
-const RootHeader = (props: AppbarProps) => {
+export default function RootHeader(props: AppbarProps) {
   return <Appbar.Header {...props}>
     <Appbar.Content
       title={"Lapse Pro"}
+      titleStyle={styles.titleStyle}
     />
   </Appbar.Header>
 }
-export default RootHeader
+
+const styles = StyleSheet.create({
+  titleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  }
+})

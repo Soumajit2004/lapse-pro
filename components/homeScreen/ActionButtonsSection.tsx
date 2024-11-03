@@ -1,16 +1,22 @@
 import {Pressable, StyleSheet, View} from "react-native";
 import {Icon, MD3Theme, Text, useTheme} from "react-native-paper";
+import {router} from "expo-router";
 
 export default function ActionButtonsSection() {
   const theme = useTheme();
+
   const themedStyles = styles(theme);
+
+  const handelNewProjectButton = () => {
+    router.push('/newProjectModal');
+  }
 
   return (
     <View style={{flexDirection: 'row', gap: 15, padding: 15}}>
       <View style={themedStyles.buttonOuterContainer}>
         <Pressable style={themedStyles.buttonInnerContainer}
                    android_ripple={{color: theme.colors.primaryContainer}}
-                   onPress={() => console.log('Button pressed')}>
+                   onPress={handelNewProjectButton}>
           <Icon size={35} source={"plus"} color={theme.colors.primary}/>
           <Text style={themedStyles.actionButtonText}>New Project</Text>
         </Pressable>

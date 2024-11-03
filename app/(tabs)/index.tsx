@@ -12,7 +12,7 @@ export default function Tab() {
 
       <Divider style={themedStyles.divider}/>
 
-      <View style={{flex: 1, width: "100%", paddingHorizontal: 15}}>
+      <View style={{flex: 1, width: "100%", padding: 15}}>
         <Text variant={"titleMedium"}>Recent Projects</Text>
       </View>
     </View>
