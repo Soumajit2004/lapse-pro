@@ -1,7 +1,6 @@
 import {Stack} from 'expo-router';
 import 'react-native-reanimated';
 import {MD3DarkTheme, PaperProvider} from "react-native-paper";
-import StackHeader from "@/components/StackHeader";
 import darkTheme from "@/constants/darkTheme";
 
 const theme = {
