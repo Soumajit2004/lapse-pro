@@ -1,7 +1,7 @@
 import {Tabs} from 'expo-router';
 import {Icon, useTheme} from "react-native-paper";
-import CustomBottomTabBar from "@/components/BottomTabBar";
-import RootHeader from "@/components/RootHeader";
+import CustomBottomTabBar from "@/components/common/tabBars/BottomTabBar";
+import RootHeader from "@/components/common/headers/RootHeader";
 
 export default function TabLayout() {
   const {colors: themeColors} = useTheme()
@@ -23,13 +23,6 @@ export default function TabLayout() {
         options={{
           title: 'Videos',
           tabBarIcon: () => <Icon size={28} source={"play-box-multiple"} color={themeColors.primary}/>,
-        }}
-      />
-      <Tabs.Screen
-        name="import"
-        options={{
-          title: 'Import',
-          tabBarIcon: () => <Icon size={28} source={"tray-arrow-down"} color={themeColors.primary}/>,
         }}
       />
       <Tabs.Screen
