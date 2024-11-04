@@ -8,7 +8,7 @@ export default function ActionButtonsSection() {
   const themedStyles = styles(theme);
 
   const handelNewProjectButton = () => {
-    router.push('/newProjectModal');
+    router.push('/project/new');
   }
 
   return (
