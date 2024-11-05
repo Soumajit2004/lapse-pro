@@ -14,6 +14,12 @@ export default function ProjectLayout() {
           headerTitle: 'New Project',
         }}
       />
+      <Stack.Screen
+        name="open-project/[projectID]"
+        options={{
+          headerTitle: 'Open Project',
+        }}
+      />
     </Stack>
   );
 }

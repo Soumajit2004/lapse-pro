@@ -6,8 +6,8 @@ export const projects = database.collections.get<ProjectModel>(TABLE_NAME.projec
 
 export default class ProjectsController {
   static async save(title: string) {
-    await database.write(async () => {
-      await projects.create(project => {
+    return database.write(() => {
+      return projects.create(project => {
         project.title = title;
       });
     });

@@ -2,6 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import {Button, MD3Theme, TextInput, useTheme} from "react-native-paper";
 import {Controller, useForm} from "react-hook-form";
 import ProjectsController from "@/database/controllers/project.controller";
+import {router} from "expo-router";
 
 type CreateProjectFormData = {
   title: string;
@@ -11,7 +12,7 @@ export default function New() {
   const theme = useTheme();
   const themedStyles = styles(theme);
 
-  const {control, handleSubmit, formState: {errors}} = useForm<CreateProjectFormData>({
+  const {control, handleSubmit} = useForm<CreateProjectFormData>({
     defaultValues: {
       title: '',
     }
@@ -19,9 +20,16 @@ export default function New() {
 
   const onSubmit = async (data: CreateProjectFormData) => {
     try {
-      await ProjectsController.save(data.title)
-    } catch (e) {
+      const project = await ProjectsController.save(data.title)
 
+      if (!project.id) {
+        console.error('Error saving project')
+        return
+      }
+
+      router.push(`/project/open-project/${project.id}`)
+    } catch (e) {
+      console.log(e)
     }
   }
 
